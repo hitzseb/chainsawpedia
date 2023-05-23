@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block changingContent %}
+
+<div class="container my-5 py-5">
+    <div class="d-flex flex-wrap">
+        {% for character in character_list %}
+        <a href="/character/{{character.id}}" class="text-decoration-none text-dark">
+            <div class="card bg-warning border-dark m-3" style="width: 10rem;">
+                <img src="{{character.image}}" class="card-img-top" alt="{{character.name}} picture">
+                <div class="card-body">
+                    <p class="fw-bold text-center">{{character.name}}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block changingContent %}
+
+<div class="container my-5 py-5">
+
+    <div class="card border-dark mx-auto" style="width: 60rem;">
+        <div class="card-header bg-warning border-dark h1 text-center">
+            <span class="badge bg-dark">{{manga.number}}</span>
+            {{manga.title}}
+        </div>
+        <div class="card-body">
+            <p class="lead">Released in {{manga.date}}</p>
+            <p class="lead">{{manga.arc.saga.title}}</p>
+            <p class="lead">{{manga.arc.title}}</p>
+            <p>{{manga.plot|linebreaks}}</p>
+            <small>Source: {{manga.source}}</small>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block changingContent %}
+
+<!-- <img src="https://i.imgur.com/dBh8wIv.png" alt=""> -->
+
+<div class="container-fluid py-5 text-center vh-100 background">
+    <div class="card d-inline-block p-3 mt-5 mx-auto custom-animation">
+        <div>
+            <h1 class="display-4 text-warning">Welcome to the Chainsawpedia</h1>
+            <p class="lead text-light">A Chainsaw Man ecyclopedia made with Django.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .background {
+        background-image: url(https://i.imgur.com/dBh8wIv.png); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        min-height: 1600px
+    }
+
+    .card {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+{% endblock %}

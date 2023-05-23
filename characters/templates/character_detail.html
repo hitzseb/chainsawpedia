@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block changingContent %}
+
+<div class="container my-5 py-5">
+
+    <div class="row">
+        <div class="col col-xxl-4 col-lg-4 col-md-4 col-auto mx-auto mb-5">
+            <div class="card bg-warning border-dark" style="width: 20rem;">
+                <div class="card-header h1 text-center">{{character.name}}</div>
+                <img src="{{character.image}}" class="card-img-top" alt="{{character.name}} picture">
+                <ul class="list-group list-group-flush">
+                    {% if character.alias %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Alias: </span>
+                            <span>{{character.alias}}</span>
+                        </p>
+                    </li>
+                    {% endif %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Especie: </span>
+                            <span>{{character.species}}</span>
+                        </p>
+                    </li>
+                    {% if character.age %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Edad: </span>
+                            <span>{{character.age}}</span>
+                        </p>
+                    </li>
+                    {% endif %}
+                    {% if character.height %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Altura: </span>
+                            <span>{{character.height}}</span>
+                        </p>
+                    </li>
+                    {% endif %}
+                    {% if character.birthday %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Nacimiento: </span>
+                            <span>{{character.birthday}}</span>
+                        </p>
+                    </li>
+                    {% endif %}
+                    {% if character.birthplace %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Origen: </span>
+                            <span>{{character.birthplace}}</span>
+                        </p>
+                    </li>
+                    {% endif %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Estado: </span>
+                            <span>{{character.status}}</span>
+                        </p>
+                    </li>
+                    {% if character.contracted_devils %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Demonios contratados: </span>
+                            <span>{{character.contracted_devils}}</span>
+                        </p>
+                    </li>
+                    {% endif %}
+                    {% if character.contracted_humans %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Humanos contratados: </span>
+                            <span>{{character.contracted_humans}}</span>
+                        </p>
+                    </li>
+                    {% endif %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Debut en el manga: </span>
+                            <a class="text-secondary text-decoration-none" href="/manga/{{character.manga_debut.id}}">capítulo {{character.manga_debut.number}}</a>
+                        </p>
+                    </li>
+                    {% if character.anime_debut %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Debut en el anime: </span>
+                            <a class="text-secondary text-decoration-none" href="/season/{{character.anime_debut.season.id}}/anime">episodio {{character.anime_debut.number}}</a>
+                        </p>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col col-xxl-8 col-lg-6 col-md-4 col-auto mx-auto">
+            <p>{{character.description|linebreaks}}</p>
+            <small>Fuente: {{character.source}}</small> 
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

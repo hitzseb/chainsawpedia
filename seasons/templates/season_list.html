@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block changingContent %}
+
+<div class="container my-5 py-5">
+    {% for season in season_list %}
+    <div class="card bg-warning border-dark text-center mx-auto mb-3" style="max-width: 60rem;">
+        <div class="card-header h1">Season {{season.number}}</div>
+        <div class="card-body text-center">
+            <div class="ratio ratio-16x9">
+                <iframe src="{{season.trailer}}" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="my-3">
+                <a href="/season/{{season.id}}/anime"
+                    class="lead fw-bold text-center text-dark text-decoration-none">List of episodes</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
