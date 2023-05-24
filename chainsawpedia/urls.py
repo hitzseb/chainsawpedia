@@ -20,7 +20,6 @@ from volumes.views import volume_list, volume_detail
 from characters.views import character_list, character_detail
 from mangas.views import manga_detail
 from seasons.views import season_list
-from animes.views import anime_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +29,5 @@ urlpatterns = [
     path('character/<int:pk>', character_detail, name='character_detail'),
     path('manga/<int:pk>', manga_detail, name='manga_detail'),
     path('season/', season_list, name='season_list'),
-    path('season/<int:pk>/anime', anime_list, name='animes_list'),
     path('', home, name='home'),
 ]
