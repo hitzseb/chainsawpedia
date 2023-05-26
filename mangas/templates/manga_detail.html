@@ -12,7 +12,7 @@
             {{manga.title}}
         </div>
         <div class="card-body">
-            <p class="lead">Released in {{manga.date}}</p>
+            <p class="lead">{{manga.date|date:"d-m-Y"}}</p>
             <p class="lead">{{manga.arc.saga.title}}</p>
             <p class="lead">{{manga.arc.title}}</p>
             <p>{{manga.plot|linebreaks}}</p>
