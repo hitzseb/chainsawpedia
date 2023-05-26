@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from main.views import home
-from volumes.views import volume_list, volume_detail
+from volumes.views import volume_list
 from characters.views import character_list, character_detail
 from mangas.views import manga_detail
 from seasons.views import season_list
@@ -24,7 +24,6 @@ from seasons.views import season_list
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('volume/', volume_list, name='volume_list'),
-    path('volume/<int:pk>', volume_detail, name='volume_detail'),
     path('character/', character_list, name='character_list'),
     path('character/<int:pk>', character_detail, name='character_detail'),
     path('manga/<int:pk>', manga_detail, name='manga_detail'),

@@ -6,29 +6,29 @@
 
 <div class="container my-5 py-5">
     {% for season in season_list %}
-    <div class="card bg-warning border-dark text-center mx-auto mb-3" style="max-width: 60rem;">
-        <div class="card-header h1">Season {{season.number}}</div>
+    <div class="card text-center mx-auto mb-5" style="max-width: 60rem;">
+        <div class="card-header bg-warning h1">Season {{season.number}}</div>
         <div class="card-body text-center">
             <div class="ratio ratio-16x9">
                 <iframe src="{{season.trailer}}" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
-            <table class="table table-bordered border-dark text-center mt-3">
+            <table class="table table-borderless table-hover mt-3">
                 <thead>
-                    <tr class="bg-warning">
-                        <th>Number</th>
+                    <tr>
+                        <th>#</th>
                         <th>Title</th>
                         <th>Plot</th>
                     </tr>
                 </thead>
-                <tbody class="bg-light">
+                <tbody>
                     {% for anime in season.anime_list %}
                     <tr>
                         <td>{{anime.number}}</td>
                         <td>{{anime.title}}</td>
                         <td>
-                            <div class="scrollable-cell">{{anime.plot|linebreaks}}</div>
+                            <div>{{anime.plot|linebreaks}}</div>
                         </td>
                     </tr>
                     {% endfor %}

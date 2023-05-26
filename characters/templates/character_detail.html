@@ -6,10 +6,10 @@
 
 <div class="container my-5 py-5">
 
-    <div class="row">
-        <div class="col col-xxl-4 col-lg-4 col-md-4 col-auto mx-auto mb-5">
-            <div class="card bg-warning border-dark" style="width: 20rem;">
-                <div class="card-header h1 text-center">{{character.name}}</div>
+    <div class="row mb-5">
+        <div class="col col-xxl-4 col-lg-4 col-md-4 col-auto mx-auto mb-4">
+            <div class="card" style="width: 22rem;">
+                <div class="card-header bg-warning h1 text-center">{{character.name}}</div>
                 <img src="{{character.image}}" class="card-img-top" alt="{{character.name}} picture">
                 <ul class="list-group list-group-flush">
                     {% if character.alias %}
@@ -58,12 +58,22 @@
                         </p>
                     </li>
                     {% endif %}
+                    {% if character.status %}
                     <li class="list-group-item">
                         <p>
                             <span class="fw-bold">Estado: </span>
                             <span>{{character.status}}</span>
                         </p>
                     </li>
+                    {% endif %}
+                    {% if character.powers_and_abilities %}
+                    <li class="list-group-item">
+                        <p>
+                            <span class="fw-bold">Poderes y habilidades: </span>
+                            <span>{{character.powers_and_abilities}}</span>
+                        </p>
+                    </li>
+                    {% endif %}
                     {% if character.contracted_devils %}
                     <li class="list-group-item">
                         <p>
@@ -80,17 +90,22 @@
                         </p>
                     </li>
                     {% endif %}
+                    {% if character.manga_debut %}
                     <li class="list-group-item">
                         <p>
                             <span class="fw-bold">Debut en el manga: </span>
-                            <a class="text-secondary text-decoration-none" href="/manga/{{character.manga_debut.id}}">capítulo {{character.manga_debut.number}}</a>
+                            <a class="text-secondary text-decoration-none"
+                                href="/manga/{{character.manga_debut.id}}">capítulo {{character.manga_debut.number}}</a>
                         </p>
                     </li>
+                    {% endif %}
                     {% if character.anime_debut %}
                     <li class="list-group-item">
                         <p>
                             <span class="fw-bold">Debut en el anime: </span>
-                            <a class="text-secondary text-decoration-none" href="/season/{{character.anime_debut.season.id}}/anime">episodio {{character.anime_debut.number}}</a>
+                            <a class="text-secondary text-decoration-none"
+                                href="/season/{{character.anime_debut.season.id}}/anime">episodio
+                                {{character.anime_debut.number}}</a>
                         </p>
                     </li>
                     {% endif %}
@@ -98,12 +113,45 @@
             </div>
         </div>
 
-        <div class="col col-xxl-8 col-lg-6 col-md-4 col-auto mx-auto">
+        <div class="col col-xxl-8 col-lg-6 col-md-4 col-auto mx-auto text-justify">
+            <div class="mx-3">
             <p>{{character.description|linebreaks}}</p>
-            <small>Fuente: {{character.source}}</small> 
+            {% if character.appearance %}
+            <p class="h3">Apariencia</p>
+            <p>{{character.appearance}}</p>
+            {% endif %}
+            {% if character.fiend_form %}
+            <p class="lead">Forma humano demonio</p>
+            <p>{{character.fiend_form}}</p>
+            {% endif %}
+            {% if character.hybrid_form %}
+            <p class="h5">Forma híbrida</p>
+            <p>{{character.hybrid_form}}</p>
+            {% endif %}
+            {% if character.devil_form %}
+            <p class="h5">Forma demoníaca</p>
+            <p>{{character.devil_form}}</p>
+            {% endif %}
+            {% if character.human_form %}
+            <p class="h5">Forma humana</p>
+            <p>{{character.appearance}}</p>
+            {% endif %}
+            {% if character.personality %}
+            <p class="h3">Personalidad</p>
+            <p>{{character.personality}}</p>
+            {% endif %}
+            <small>Fuente: {{character.source}}</small>
+        </div>
         </div>
 
     </div>
 </div>
+
+<style>
+    .text-justify {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+</style>
 
 {% endblock %}
