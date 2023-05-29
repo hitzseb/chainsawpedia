@@ -1,6 +1,15 @@
 from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from volumes.serializers import VolumeSerializer
 from mangas.models import Manga
 from .models import Volume
+
+class VolumeList(APIView):
+    def get(self, request):
+        volume_list = Volume.objects.all().order_by('number')
+        serializer = VolumeSerializer(volume_list, many=True)
+        return Response(serializer.data)
 
 def volume_list(request):
     volume_list = Volume.objects.all().order_by('number')

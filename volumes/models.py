@@ -1,5 +1,4 @@
 from django.db import models
-from arcs.models import Arc
 
 class Volume(models.Model):
     number = models.IntegerField(null=True, blank=True)
