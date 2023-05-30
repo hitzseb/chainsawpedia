@@ -21,6 +21,20 @@ from volumes.views import VolumeView, volume_list
 from characters.views import CharacterView, character_list, character_detail
 from mangas.views import MangaView, manga_detail
 from seasons.views import season_list
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="API Documentation",
+        default_version='v1',
+        description="API documentation for your application",
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,4 +50,6 @@ urlpatterns = [
     path('api/manga/', MangaView.as_view(), name='manga-list'),
     path('api/manga/<int:number>', MangaView.as_view(), name='manga'),
     path('api/anime/', AnimeView.as_view(), name='anime-list'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
