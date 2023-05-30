@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from animes.models import Anime
 from animes.serializers import AnimeSerializer
 
-class AnimeList(APIView):
+class AnimeView(APIView):
     def get(self, request):
         anime_list = Anime.objects.all().order_by('number')
         serializer = AnimeSerializer(anime_list, many=True)

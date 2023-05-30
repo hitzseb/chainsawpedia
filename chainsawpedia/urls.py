@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from animes.views import AnimeList
+from animes.views import AnimeView
 from main.views import home
-from volumes.views import VolumeList, volume_list
-from characters.views import CharacterList, character_list, character_detail
-from mangas.views import MangaList, manga_detail
+from volumes.views import VolumeView, volume_list
+from characters.views import CharacterView, character_list, character_detail
+from mangas.views import MangaView, manga_detail
 from seasons.views import season_list
 
 urlpatterns = [
@@ -30,8 +30,10 @@ urlpatterns = [
     path('manga/<int:pk>', manga_detail, name='manga_detail'),
     path('season/', season_list, name='season_list'),
     path('', home, name='home'),
-    path('api/character/', CharacterList.as_view(), name='character-list'),
-    path('api/volume/', VolumeList.as_view(), name='volume-list'),
-    path('api/manga/', MangaList.as_view(), name='manga-list'),
-    path('api/anime/', AnimeList.as_view(), name='anime-list'),
+    path('api/character/', CharacterView.as_view(), name='character-list'),
+    path('api/character/<str:name>/', CharacterView.as_view(), name='character'),
+    path('api/volume/', VolumeView.as_view(), name='volume-list'),
+    path('api/manga/', MangaView.as_view(), name='manga-list'),
+    path('api/manga/<int:number>', MangaView.as_view(), name='manga'),
+    path('api/anime/', AnimeView.as_view(), name='anime-list'),
 ]
