@@ -4,4 +4,4 @@ from .models import Volume
 class VolumeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Volume
-        fields = '__all__'
+        fields = ['number', 'title', 'date', 'cover']

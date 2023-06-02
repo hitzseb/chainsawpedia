@@ -4,9 +4,10 @@
 
 {% block changingContent %}
 
-<div class="container my-5 py-5">
-    {% for season in season_list %}
-    <div class="card text-center mx-auto mb-5" style="max-width: 60rem;">
+<div class="container-fluid my-5 py-5">
+
+    <div class="card text-center mx-auto" style="max-width: 60rem;">
+        {% for season in season_list %}
         <div class="card-header bg-warning h1">Season {{season.number}}</div>
         <div class="card-body text-center">
             <div class="ratio ratio-16x9">
@@ -35,8 +36,9 @@
                 </tbody>
             </table>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
 </div>
 
 {% endblock %}

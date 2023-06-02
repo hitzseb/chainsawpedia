@@ -5,33 +5,32 @@
 {% block changingContent %}
 
 <div class="container my-5 py-5">
-    <div class="mb-5">
-        {% for volume in volume_list %}
-        <div class="card mx-auto" style="max-width: 60rem;">
-            <div class="row g-0">
-                <div class="card-header bg-warning text-center h2">Volumen {{volume.number}}</div>
-                <div class="col-md-4 col-sm-4 text-center">
-                    <img src="{{volume.cover}}" class="img-fluid rounded-start" alt="Volume {{volume.number}} cover">
-                </div>
-                <div class="col">
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            {% for manga in volume.manga_list %}
-                            <li class="list-group-item">
-                                <span class="badge bg-dark">{{manga.number}}</span>
-                                <a href="/manga/{{manga.id}}" class="text-dark text-decoration-none">{{manga.title}}</a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-footer text-center">
-                    <p>{{volume.title}}</p>
-                    <p>{{volume.date|date:"d-m-Y"}}</p>
+    {% for volume in volume_list %}
+    <div class="card mx-auto" style="max-width: 60rem;">
+        <div class="row g-0">
+            <div class="card-header bg-warning text-center h2">Volumen {{volume.number}}</div>
+            <div class="col-md-4 col-sm-4 text-center">
+                <img src="{{volume.cover}}" class="img-fluid rounded-start" alt="Volume {{volume.number}} cover">
+            </div>
+            <div class="col">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for manga in volume.manga_list %}
+                        <li class="list-group-item">
+                            <span class="badge bg-dark">{{manga.number}}</span>
+                            <a href="/manga/{{manga.id}}" class="text-dark text-decoration-none">{{manga.title}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
+            <div class="card-footer text-center">
+                <p>{{volume.title}}</p>
+                <p>{{volume.date|date:"d-m-Y"}}</p>
+            </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 
-    {% endblock %}
+{% endblock %}

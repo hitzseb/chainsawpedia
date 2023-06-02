@@ -3,16 +3,16 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.db.models import Q
 from characters.models import Character
-from characters.serializers import CharacterSerializer
+from characters.serializers import CharacterListSerializer, CharacterDetailSerializer
 
 class CharacterView(APIView):
     def get(self, request, name=None):
         if name is None:
             character_list = Character.objects.all().order_by('-is_main', 'name')
-            serializer = CharacterSerializer(character_list, many=True)
+            serializer = CharacterListSerializer(character_list, many=True)
         else:
             character = get_object_or_404(Character, Q(name__iexact=name))
-            serializer = CharacterSerializer(character)
+            serializer = CharacterDetailSerializer(character)
         return Response(serializer.data)
 
 def character_list(request):
