@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from animes.views import AnimeView
+from arcs.views import ArcView
 from main.views import home
+from sagas.views import SagaView
 from volumes.views import VolumeView, volume_list
 from characters.views import CharacterView, character_list, character_detail
 from mangas.views import MangaView, manga_detail
-from seasons.views import season_list
+from seasons.views import SeasonView, season_list
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -50,6 +52,9 @@ urlpatterns = [
     path('api/manga/', MangaView.as_view(), name='manga-list'),
     path('api/manga/<int:number>', MangaView.as_view(), name='manga'),
     path('api/anime/', AnimeView.as_view(), name='anime-list'),
+    path('api/arc/', ArcView.as_view(), name='arc-list'),
+    path('api/season/', SeasonView.as_view(), name='season-list'),
+    path('api/saga/', SagaView.as_view(), name='saga-list'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
