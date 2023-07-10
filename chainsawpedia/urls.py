@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from animes.views import AnimeView
 from arcs.views import ArcView
-from main.views import home
+from .views import home
 from sagas.views import SagaView
 from volumes.views import VolumeView, volume_list
 from characters.views import CharacterView, character_list, character_detail
